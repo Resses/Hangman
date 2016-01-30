@@ -3,6 +3,7 @@ package game;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
+import java.io.Console;
 
 public class Game{
 	final static int MAX_GUESSES=8;
@@ -30,9 +31,10 @@ public class Game{
 	}
 	private void getPhrase() {
 		System.out.println("Please enter the phrase: ");
-		Scanner input = new Scanner(System.in);
+		Console c = System.console();
 		do { 
-			guessPhrase = input.nextLine().toUpperCase();
+			char arr[] = c.readPassword();
+			guessPhrase = new String(arr).toUpperCase();
 		}
 		while(!isValidPhrase(guessPhrase));
 		
